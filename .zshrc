@@ -7,32 +7,41 @@ setopt AUTO_PUSHD
 setopt CORRECT
 setopt CORRECT_ALL
 
+# local executables
+export PATH=$HOME/.local/bin:$PATH
+
 # brew
 eval $(/opt/homebrew/bin/brew shellenv)
 export FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 
-# rust
-export FPATH=$(brew --prefix)/opt/rustup/share/zsh/site-functions:$FPATH
-export FPATH=$HOME/.rustup/toolchains/stable-aarch64-apple-darwin/share/zsh/site-functions:$FPATH
-#export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
 [[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env
+
+if type rustc &> /dev/null; then
+    export FPATH="$(rustc --print sysroot)"/share/zsh/site-functions:$FPATH
+fi
 
 # autocompletion
 autoload -Uz compinit && compinit
 zstyle ':completion:*' rehash true
 
-# fzf
-if type fd &> /dev/null; then
-    export FZF_DEFAULT_COMMAND="fd"
-    export FZF_CTRL_T_COMMAND="fd"
-    export FZF_ALT_C_COMMAND="fd --type d"
-elif type rg &> /dev/null; then
-    export FZF_DEFAULT_COMMAND='rg --files'
+# rust
+if type rustup &> /dev/null; then
+    eval "$(rustup completions zsh)"
+    #eval "$(rustup completions zsh cargo)"
 fi
 
-export FZF_COMPLETION_TRIGGER="??"
 
 if type fzf &> /dev/null; then
+    if type fd &> /dev/null; then
+        export FZF_DEFAULT_COMMAND="fd"
+        export FZF_CTRL_T_COMMAND="fd"
+        export FZF_ALT_C_COMMAND="fd --type d"
+    elif type rg &> /dev/null; then
+        export FZF_DEFAULT_COMMAND='rg --files'
+    fi
+
+    export FZF_COMPLETION_TRIGGER="??"
+
     eval "$(fzf --zsh)"
 fi
 
@@ -40,8 +49,14 @@ if type direnv &> /dev/null; then
     eval "$(direnv hook zsh)"
 fi
 
-# local executables
-export PATH=$HOME/.local/bin:$PATH
+if type uv &> /dev/null; then
+    eval "$(uv generate-shell-completion zsh)"
+fi
+
+if type uvx &> /dev/null; then
+    eval "$(uvx --generate-shell-completion zsh)"
+fi
+
 
 # aliases
 alias ll="ls -alG"
