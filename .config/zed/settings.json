@@ -62,7 +62,7 @@
     "pyright": {
       "settings": {
         "python": {
-          "pythonPath": "venv/bin/python"
+          "pythonPath": ".venv/bin/python"
         }
       }
     }
