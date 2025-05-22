@@ -69,5 +69,8 @@
   },
   "auto_install_extensions": {
     "ruff": true
+  },
+  "minimap": {
+    "show": "auto"
   }
 }

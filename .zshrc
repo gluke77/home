@@ -61,3 +61,6 @@ fi
 # aliases
 alias ll="ls -alG"
 alias brew-up="brew update && brew upgrade -g && brew autoremove && brew cleanup -s --prune=all && brew outdated --cask"
+alias dnode="docker run --rm -it -v .:/src -w /src node $@"
+alias dnpm="docker run --rm -it -v .:/src -w /src node npm $@"
+alias dnpmrun="docker run --rm -it -v .:/src -w /src node npm run $@"
