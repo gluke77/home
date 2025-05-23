@@ -49,15 +49,6 @@ if type direnv &> /dev/null; then
     eval "$(direnv hook zsh)"
 fi
 
-if type uv &> /dev/null; then
-    eval "$(uv generate-shell-completion zsh)"
-fi
-
-if type uvx &> /dev/null; then
-    eval "$(uvx --generate-shell-completion zsh)"
-fi
-
-
 # aliases
 alias ll="ls -alG"
 alias brew-up="brew update && brew upgrade -g && brew autoremove && brew cleanup -s --prune=all && brew outdated --cask"
