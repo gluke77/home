@@ -52,7 +52,25 @@ fi
 # aliases
 alias ll="ls -alG"
 alias brew-up="brew update && brew upgrade -g && brew autoremove && brew cleanup -s --prune=all && brew outdated --cask"
-alias dnode="docker run --rm -it -v .:/src -w /src node $@"
-alias dnpm="docker run --rm -it -v .:/src -w /src node npm $@"
-alias dnpmrun="docker run --rm -it -v .:/src -w /src node npm run $@"
 
+alias node="docker run --rm -it -v .:/src -w /src node $@"
+alias npm="node npm $@"
+alias npx="node npx $@"
+alias npr="npm run $@"
+alias tsr="node -r esbuild-register $@"
+
+alias tsconfig-init='cat > tsconfig.json <<EOF
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "include": ["src/**/*.ts"],
+  "extends": "@tsconfig/strictest/tsconfig.json"
+}
+EOF
+'
+
+alias ts-init="npm init -y && npm add -D typescript @types/node esbuild esbuild-register @tsconfig/strictest && npx tsc --init && mkdir src && echo 'console.log(\"Hello, world!\");' > src/index.ts"
