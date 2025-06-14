@@ -54,14 +54,16 @@ alias ll="ls -alG"
 alias brew-up="brew update && brew upgrade -g && brew autoremove && brew cleanup -s --prune=all && brew outdated --cask"
 
 # node, typescript
-if ! type pnpm &> /dev/null; then
+if ! type node &> /dev/null; then
     alias node="docker run --rm -it -v .:/src -w /src node $@"
     alias npm="node npm $@"
     alias npx="node npx $@"
     alias npr="npm run $@"
 fi
 
-alias tsr="node -r esbuild-register $@"
+alias tsrun="node -r esbuild-register $@"
+alias tsr="tsrun src/index.ts"
+alias tsbuild="npx esbuild src/index.ts --bundle --outdir=dist --platform=node $@"
 
 alias tsconfig-init='cat > tsconfig.json <<EOF
 {
