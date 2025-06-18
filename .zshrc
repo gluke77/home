@@ -49,6 +49,11 @@ if type direnv &> /dev/null; then
     eval "$(direnv hook zsh)"
 fi
 
+#functions
+function mcd {
+    mkdir -p $1 && cd $_
+}
+
 # aliases
 alias ll="ls -alG"
 alias brew-up="brew update && brew upgrade -g && brew autoremove && brew cleanup -s --prune=all && brew outdated --cask"
