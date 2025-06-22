@@ -7,6 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "theme": "Ayu Dark",
   "features": {
     "edit_prediction_provider": "none"
   },
@@ -24,6 +25,7 @@
   "buffer_font_features": {
     "calt": false
   },
+  "buffer_font_size": 18,
   "buffer_font_family": "JetBrains Mono NL",
   "tabs": {
     "git_status": true,
@@ -64,6 +66,9 @@
     "ruff": true
   },
   "minimap": {
-    "show": "auto"
+    "show": "always"
+  },
+  "scrollbar": {
+    "show": "never"
   }
 }

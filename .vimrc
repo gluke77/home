@@ -12,17 +12,13 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'ConradIrwin/vim-bracketed-paste' 
-Plug 'tomasiser/vim-code-dark'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 call plug#end()            " required
 
-" colorscheme desert
-" colorscheme industry
-colorscheme codedark
+colorscheme sorbet
 
-" set background=dark
 set modelines=0 " prevent some security exploits thru modelines
 set number
 set ruler
