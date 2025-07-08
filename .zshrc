@@ -56,6 +56,8 @@ function mcd {
 
 # aliases
 alias ll="ls -alG"
+alias ddu="du -h -d 1 2>/dev/null"
+alias ddf="df -h"
 alias brew-up="brew update && brew upgrade -g && brew autoremove && brew cleanup -s --prune=all && brew outdated --cask"
 
 # node, typescript
