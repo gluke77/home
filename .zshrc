@@ -58,6 +58,8 @@ function mcd {
 alias ll="ls -alG"
 alias ddu="du -h -d 1 2>/dev/null"
 alias ddf="df -h"
+alias n="nnn -He"
+alias mc="n"
 alias brew-up="brew update && brew upgrade -g && brew autoremove && brew cleanup -s --prune=all && brew outdated --cask"
 
 # node, typescript
@@ -91,3 +93,4 @@ alias ts-init="npm init -y && npm add -D typescript @types/node esbuild esbuild-
 if type pnpm &> /dev/null; then
     alias pts-init="pnpm init && pnpm add -D typescript esbuild esbuild-register @types/node @tsconfig/strictest && pnpm tsc --init && mkdir src && echo 'console.log(\"Hello, world!\");' >> src/index.ts"
 fi
+
