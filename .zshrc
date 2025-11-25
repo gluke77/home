@@ -10,6 +10,8 @@ setopt CORRECT_ALL
 # local executables
 export PATH=$HOME/.local/bin:$PATH
 
+export EDITOR=/usr/bin/vim
+
 # brew
 eval $(/opt/homebrew/bin/brew shellenv)
 export FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
@@ -58,8 +60,6 @@ function mcd {
 alias ll="ls -alG"
 alias ddu="du -h -d 1 2>/dev/null"
 alias ddf="df -h"
-alias n="nnn -He"
-alias mc="n"
 alias brew-up="brew update && brew upgrade -g && brew autoremove && brew cleanup -s --prune=all && brew outdated --cask"
 
 # node, typescript
