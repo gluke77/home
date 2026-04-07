@@ -7,19 +7,20 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "minimap": {
+    "show": "always"
+  },
+  "edit_predictions": {
+    "provider": "none"
+  },
   "disable_ai": true,
   "theme": "One Dark",
-  "features": {
-    "edit_prediction_provider": "none"
-  },
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
   "collaboration_panel": {
     "button": false
-  },
-  "agent": {
   },
   "buffer_font_features": {
     "calt": false
@@ -60,10 +61,4 @@
   "auto_install_extensions": {
     "ruff": true
   },
-  "minimap": {
-    "show": "always"
-  },
-  "scrollbar": {
-    "show": "never"
-  }
 }
