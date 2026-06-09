@@ -70,9 +70,9 @@ if ! type node &> /dev/null; then
     alias npr="npm run $@"
 fi
 
-alias tsrun="node -r esbuild-register $@"
-alias tsr="tsrun src/index.ts"
-alias tsbuild="npx esbuild src/index.ts --bundle --outdir=dist --platform=node $@"
+alias tsrun="node $@"
+alias tsr="node src/index.ts"
+alias tsbuild="npx tsc $@"
 
 alias tsconfig-init='cat > tsconfig.json <<EOF
 {
@@ -80,7 +80,12 @@ alias tsconfig-init='cat > tsconfig.json <<EOF
     "target": "ESNext",
     "module": "NodeNext",
     "rootDir": "./src",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "moduleResolution": "NodeNext",
+    "rewriteRelativeImportExtensions": true,
+    "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
+    "types": ["node"]
   },
   "include": ["src/**/*.ts"],
   "extends": "@tsconfig/strictest/tsconfig.json"
@@ -88,9 +93,9 @@ alias tsconfig-init='cat > tsconfig.json <<EOF
 EOF
 '
 
-alias ts-init="npm init -y && npm add -D typescript @types/node esbuild esbuild-register @tsconfig/strictest && npx tsc --init && mkdir src && echo 'console.log(\"Hello, world!\");' > src/index.ts"
+alias ts-init="npm init -y && npm add -D typescript @types/node @tsconfig/strictest && npx tsc --init && mkdir src && echo 'console.log(\"Hello, world!\");' > src/index.ts"
 
 if type pnpm &> /dev/null; then
-    alias pts-init="pnpm init && pnpm add -D typescript esbuild esbuild-register @types/node @tsconfig/strictest && pnpm tsc --init && mkdir src && echo 'console.log(\"Hello, world!\");' >> src/index.ts"
+    alias pts-init="pnpm init && pnpm add -D typescript @types/node @tsconfig/strictest && pnpm tsc --init && mkdir src && echo 'console.log(\"Hello, world!\");' >> src/index.ts"
 fi
 
