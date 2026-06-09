@@ -81,7 +81,6 @@ alias tsconfig-init='cat > tsconfig.json <<EOF
     "module": "NodeNext",
     "rootDir": "./src",
     "outDir": "./dist",
-    "moduleResolution": "NodeNext",
     "rewriteRelativeImportExtensions": true,
     "verbatimModuleSyntax": true,
     "erasableSyntaxOnly": true,
