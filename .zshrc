@@ -64,7 +64,7 @@ alias brew-up="brew update && brew upgrade -g && brew autoremove && brew cleanup
 
 # node, typescript
 if ! type node &> /dev/null; then
-    alias node="docker run --rm -it -v .:/src -w /src node $@"
+    alias node="docker run --rm -it -v .:/src -w /src node:26-slim $@"
     alias npm="node npm $@"
     alias npx="node npx $@"
     alias npr="npm run $@"
