@@ -16,21 +16,17 @@ export EDITOR=/usr/bin/vim
 eval $(/opt/homebrew/bin/brew shellenv)
 export FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 
-[[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env
-
-if type rustc &> /dev/null; then
-    export FPATH="$(rustc --print sysroot)"/share/zsh/site-functions:$FPATH
+# rust
+# brew install rustup
+# rustup default stable
+# this also updates fpath so should go before autocompletion
+if type rustup &> /dev/null; then
+    export PATH="$(brew --prefix rustup)"/bin:$PATH
 fi
 
 # autocompletion
 autoload -Uz compinit && compinit
 zstyle ':completion:*' rehash true
-
-# rust
-if type rustup &> /dev/null; then
-    eval "$(rustup completions zsh)"
-    #eval "$(rustup completions zsh cargo)"
-fi
 
 
 if type fzf &> /dev/null; then
